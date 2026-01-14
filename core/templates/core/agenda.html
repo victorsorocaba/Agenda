@@ -11,11 +11,14 @@
             <div style={% if evento.get_evento_atrasado %}
                             "color:red"
                         {% endif %}>
+            <div     style={% if evento.get_evento_proximo %}
+                            "color:yellow"
+                        {% endif %}>
             {{  evento.titulo }} - {{ evento.get_data_evento }}
 
             ( <a href="evento/?id={{ evento.id }}">Editar</a>
             / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
-            </div>
+            </>
         </li>
     {% endfor %}
     </ul>

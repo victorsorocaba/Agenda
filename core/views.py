@@ -100,3 +100,12 @@ def json_lista_evento(request):
     evento = Evento.objects.filter(usuario=usuario).values('id','titulo')
     dados = {'eventos': evento}
     return JsonResponse(list(evento), safe=False)
+
+@login_required(login_url='/login/')
+def historico_eventos(request):
+    usuario = request.user
+    data_atual = datetime.now()
+    evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__lt=data_atual)
+    dados = {'eventos': evento}
+    return render(request, 'core/agenda.html', dados)
