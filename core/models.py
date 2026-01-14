@@ -7,8 +7,8 @@ class Evento(models.Model):
     descricao = models.TextField(blank=True, null=True)
     data_evento = models.DateTimeField(verbose_name='data do evento')
     data_criacao = models.DateTimeField(auto_now=True)
-    usuario=models.ForeignKey(User,on_delete=models.CASCADE)
-    local=models.TextField(blank=True, null=True)
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    local = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.titulo
